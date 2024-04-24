@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Object Detection</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1>Upload Image for Object Detection</h1>
+        <form method="post" enctype="multipart/form-data" action="{% url 'detect_objects' %}">
+            {% csrf_token %}
+            <input type="file" name="image" accept="image/*" class="form-control-file">
+            <button type="submit" class="btn btn-primary mt-3">Detect Objects</button>
+            {% if error_message %}
+                <p class="text-danger mt-3">{{ error_message }}</p>
+            {% endif %}
+        </form>
+    </div>
+</body>
+</html>
